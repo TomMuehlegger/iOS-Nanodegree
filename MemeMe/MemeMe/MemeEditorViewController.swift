@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Thomas Muehlegger on 12.02.18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeEditorViewController: UIViewController {
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var imageFromCameraButton: UIBarButtonItem!
@@ -88,20 +88,22 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITextFieldDelegate {
+extension MemeEditorViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Reset the text of the textfield
-        textField.text = ""
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Close the textfield when clicking return (stackoverflow)
         textField.resignFirstResponder()
-        return true;
+        return true
     }
 }
 
-extension ViewController: UIImagePickerControllerDelegate {
+extension MemeEditorViewController: UIImagePickerControllerDelegate {
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         chooseSourceType(sourceType: .photoLibrary)
     }
@@ -136,7 +138,7 @@ extension ViewController: UIImagePickerControllerDelegate {
     }
 }
 
-extension ViewController: UINavigationControllerDelegate {
+extension MemeEditorViewController: UINavigationControllerDelegate {
     // Initialize the meme - reset texts and the image view
     @IBAction func cancel(_ sender: Any) {
         imagePickerView.image = nil
@@ -147,9 +149,8 @@ extension ViewController: UINavigationControllerDelegate {
     
     // Share the meme
     @IBAction func share(_ sender: Any) {
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.generateMemedImage())
         
-        let activityVC = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [self.generateMemedImage()], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
         
         activityVC.completionWithItemsHandler = { (activity, success, items, error) in
