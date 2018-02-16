@@ -26,6 +26,10 @@ class MemeEditorViewController: UIViewController {
         configureTextField(textField: bottomTextField, withText: "BOTTOM")
         
         shareButton.isEnabled = false
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        cancelButton.isEnabled = appDelegate.memes.count != 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,10 +145,7 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate {
 extension MemeEditorViewController: UINavigationControllerDelegate {
     // Initialize the meme - reset texts and the image view
     @IBAction func cancel(_ sender: Any) {
-        imagePickerView.image = nil
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        shareButton.isEnabled = false
+        dismiss(animated: true, completion: nil)
     }
     
     // Share the meme
@@ -164,9 +165,12 @@ extension MemeEditorViewController: UINavigationControllerDelegate {
     // Save the meme
     func save() {
         // Create the meme
-        let _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: self.generateMemedImage())
         
-        // TODO: Save the meme (part 02?)
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     // Generate a meme out of the actual view
