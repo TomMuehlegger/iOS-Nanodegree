@@ -46,7 +46,7 @@ class MemeEditorViewController: UIViewController {
     //Move the view only when the keyboard covers the bottom text field
     @objc func keyboardWillShow(_ notification:Notification) {
         if bottomTextField.isFirstResponder {
-            view.frame.origin.y = 0 - getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
