@@ -27,26 +27,26 @@ class FlickrClient {
         // create network request
         let task = session.dataTask(with: request) { (data, response, error) in
             
-            // If an error occurrs, print it and re-enable the UI
-            func displayError(_ error: String) {
+            func sendError(_ error: String) {
                 print(error)
+                completionHandler(nil, error)
             }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                displayError("There was an error with your request: \(String(describing: error))")
+                sendError("There was an error with your request: \(String(describing: error))")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                displayError("Your request returned a status code other than 2xx!")
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                displayError("No data was returned by the request!")
+                sendError("No data was returned by the request!")
                 return
             }
             
@@ -55,19 +55,19 @@ class FlickrClient {
             do {
                 parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
             } catch {
-                displayError("Could not parse the data as JSON: '\(data)'")
+                sendError("Could not parse the data as JSON: '\(data)'")
                 return
             }
             
             /* GUARD: Did Flickr return an error (stat != ok)? */
             guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String, stat == Constants.FlickrResponseValues.OKStatus else {
-                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
+                sendError("Flickr API returned an error. See error code and message in \(parsedResult)")
                 return
             }
             
             /* GUARD: Is "photos" key in our result? */
             guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject] else {
-                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' in \(parsedResult)")
+                sendError("No key '\(Constants.FlickrResponseKeys.Photos)' in \(parsedResult)")
                 return
             }
             
@@ -75,7 +75,7 @@ class FlickrClient {
             if (pageNumber == nil) {
                 /* GUARD: Is "pages" key in the photosDictionary? */
                 guard let totalPages = photosDictionary[Constants.FlickrResponseKeys.Pages] as? Int else {
-                    displayError("Cannot find key '\(Constants.FlickrResponseKeys.Pages)' in \(photosDictionary)")
+                    sendError("No key '\(Constants.FlickrResponseKeys.Pages)' in \(photosDictionary)")
                     return
                 }
                 
@@ -87,13 +87,13 @@ class FlickrClient {
             } else {
                 /* GUARD: Is the "photo" key in photosDictionary? */
                 guard let photosArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String: AnyObject]] else {
-                    displayError("Cannot find key '\(Constants.FlickrResponseKeys.Photo)' in \(photosDictionary)")
+                    sendError("No key '\(Constants.FlickrResponseKeys.Photo)' in \(photosDictionary)")
                     return
                 }
                 
                 /* GUARD: Check photoArray size > 0 */
                 guard ( photosArray.count != 0) else {
-                    displayError("No Photos Found. Search Again.")
+                    sendError("No Photos Found. Search Again.")
                     return
                 }
                 
@@ -102,13 +102,13 @@ class FlickrClient {
                 for photo in photosArray {
                     /* GUARD: Check imageURL */
                     guard let imageURL = photo[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                        displayError( "No Url for Image")
+                        sendError("No Url for Image")
                         return
                     }
                     
                     /* GUARD: Check ImageID */
                     guard let imageId = photo[Constants.FlickrResponseKeys.Id] as? String else {
-                        displayError( "No Id for Image")
+                        sendError("No Id for Image")
                         return
                     }
                     
@@ -145,25 +145,20 @@ class FlickrClient {
         // create network request
         let task = session.dataTask(with: request) { (data, response, error) in
             
-            // if an error occurs, print it and re-enable the UI
-            func displayError(_ error: String) {
+            func sendError(_ error: String) {
                 print(error)
-                /*performUIUpdatesOnMain {
-                 self.setUIEnabled(true)
-                 self.photoTitleLabel.text = "No photo returned. Try again."
-                 self.photoImageView.image = nil
-                 }*/
+                completionHandler(nil, error)
             }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                displayError("There was an error with your request: \(String(describing: error))")
+                sendError("There was an error with your request: \(String(describing: error))")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                displayError("No data was returned by the request!")
+                sendError("No data was returned by the request!")
                 return
             }
             
