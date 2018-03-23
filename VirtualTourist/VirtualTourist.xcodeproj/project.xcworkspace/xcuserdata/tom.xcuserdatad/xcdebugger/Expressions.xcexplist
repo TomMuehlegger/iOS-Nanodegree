@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TravelLocationsMapViewController.mapView(_:didSelect:):TravelLocationsMapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "photoAlbumViewController.pin.photos">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
