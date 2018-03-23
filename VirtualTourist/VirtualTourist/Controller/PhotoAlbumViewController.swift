@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreData
-import Foundation
 
 class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
     

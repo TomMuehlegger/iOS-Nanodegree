@@ -6,7 +6,6 @@
 //  Copyright © 2018 Thomas Muehlegger. All rights reserved.
 //
 
-import Foundation
 import MapKit
 import CoreData
 import UIKit
