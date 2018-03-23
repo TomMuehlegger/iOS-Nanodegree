@@ -85,15 +85,22 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Logout
     @IBAction func logout(_ sender: Any) {
+        activityIndicatorView.startAnimating()
+        
         Client.sharedInstance().logout(){
             (success, error) in
             
             guard(error == nil) else {
-                self.showAlert("Logout Failed", message: (error?.description)!)
+                self.showAlert("Logout Failed", message: "An error occurred when logging out the user.")
                 return
             }
+            
+            // Dismiss the tab view controller
+            self.performUIUpdatesOnMain {
+                self.activityIndicatorView.stopAnimating()
+                self.dismiss(animated: true, completion: nil)
+            }
         }
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func reloadClick(_ sender: Any) {
@@ -110,7 +117,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
                 
                 // Check on error
                 guard(error == nil) else {
-                    self.showAlert("Load students error", message: (error?.description)!)
+                    self.showAlert("Load students error", message: "An error occurred when loading student informations")
                     return
                 }
                 self.removeAnnotations()

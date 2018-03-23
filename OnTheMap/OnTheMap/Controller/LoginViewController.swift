@@ -58,6 +58,10 @@ class LoginViewController: UIViewController {
                 self.activityIndicatorView.stopAnimating()
                 
                 if success {
+                    // Reset the text fields
+                    self.textFieldEmail.text = ""
+                    self.textFieldPassword.text = ""
+                    
                     // Display the tabBarController
                     let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                     self.present(tabBarController, animated: true, completion: nil)

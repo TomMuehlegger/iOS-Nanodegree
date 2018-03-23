@@ -111,7 +111,7 @@ class PostStudentInformationViewController : UIViewController, MKMapViewDelegate
                     // Dismiss the view controller
                     self.cancel()
                 } else {
-                    self.showAlert("Updating location failed", message: error!)
+                    self.showAlert("Updating location failed", message: "An error occurred when updating the location.")
                 }
             }
         }
