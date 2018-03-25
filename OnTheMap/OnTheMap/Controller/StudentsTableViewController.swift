@@ -36,7 +36,7 @@ class StudentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentInformationCell", for: indexPath)
-        let student = self.studentInformations.getAtIndex(indexPath.row)
+        let student = studentInformations.getAtIndex(indexPath.row)
         
         // Set the labels
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
@@ -51,7 +51,7 @@ class StudentsTableViewController: UITableViewController {
         
         // If no URL provided
         guard (studentURL != nil) else {
-            self.performUIUpdatesOnMain() {
+            performUIUpdatesOnMain() {
                 self.showAlert("URL-Error", message: "No valid URL")
             }
             return
@@ -110,7 +110,7 @@ class StudentsTableViewController: UITableViewController {
     
     // MARK: Post new student location
     @IBAction func addNewLocation(_ sender: Any) {
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "postStudentInformationViewController") as! PostStudentInformationViewController
-        self.navigationController!.pushViewController(controller, animated: true)
+        let controller = storyboard!.instantiateViewController(withIdentifier: "postStudentInformationViewController") as! PostStudentInformationViewController
+        navigationController!.pushViewController(controller, animated: true)
     }
 }

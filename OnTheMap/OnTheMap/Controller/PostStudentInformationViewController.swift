@@ -33,12 +33,12 @@ class PostStudentInformationViewController : UIViewController, MKMapViewDelegate
         textFieldURL.delegate = textFieldDelegate
         
         buttonSubmit.isHidden = true
-        self.activityIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
     }
     
     @objc func cancel(){
-        self.navigationController?.popViewController(animated: true)
-        self.tabBarController?.tabBar.isHidden = false
+        navigationController?.popViewController(animated: true)
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: Search location
@@ -52,9 +52,9 @@ class PostStudentInformationViewController : UIViewController, MKMapViewDelegate
         
         // Geocoder to fetch the location
         let geocoder = CLGeocoder()
-        self.activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
         
-        geocoder.geocodeAddressString(textFieldLocation.text!){
+        geocoder.geocodeAddressString(textFieldLocation.text!) {
             (CLPlacemark, error) in
             
             guard (error == nil) else {
@@ -119,6 +119,6 @@ class PostStudentInformationViewController : UIViewController, MKMapViewDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true;
+        return true
     }    
 }

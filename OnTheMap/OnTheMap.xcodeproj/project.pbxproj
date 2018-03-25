@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E23EBFEB2063F20500447A41 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23EBFEA2063F20500447A41 /* TextFieldDelegate.swift */; };
 		E264E8602062AEA00037D534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264E85F2062AEA00037D534 /* AppDelegate.swift */; };
-		E264E8622062AEA00037D534 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264E8612062AEA00037D534 /* ViewController.swift */; };
+		E264E8622062AEA00037D534 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264E8612062AEA00037D534 /* UIViewController.swift */; };
 		E264E8652062AEA00037D534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E264E8632062AEA00037D534 /* Main.storyboard */; };
 		E264E8672062AEA00037D534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E264E8662062AEA00037D534 /* Assets.xcassets */; };
 		E264E86A2062AEA00037D534 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E264E8682062AEA00037D534 /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		E23EBFEA2063F20500447A41 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		E264E85C2062AEA00037D534 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E264E85F2062AEA00037D534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E264E8612062AEA00037D534 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E264E8612062AEA00037D534 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E264E8642062AEA00037D534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E264E8662062AEA00037D534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E264E8692062AEA00037D534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		E264E8812063A4990037D534 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E264E8612062AEA00037D534 /* ViewController.swift */,
+				E264E8612062AEA00037D534 /* UIViewController.swift */,
 				E264E8842063A5E10037D534 /* StudentsMapViewController.swift */,
 				E264E8862063A6F60037D534 /* StudentsTableViewController.swift */,
 				E2B6C8EF2063AF6A00214EEC /* LoginViewController.swift */,
@@ -237,7 +237,7 @@
 				E264E87A2062B4EE0037D534 /* ParseClient.swift in Sources */,
 				E264E87E2062BF060037D534 /* Client.swift in Sources */,
 				E264E8852063A5E10037D534 /* StudentsMapViewController.swift in Sources */,
-				E264E8622062AEA00037D534 /* ViewController.swift in Sources */,
+				E264E8622062AEA00037D534 /* UIViewController.swift in Sources */,
 				E264E8872063A6F60037D534 /* StudentsTableViewController.swift in Sources */,
 				E264E8762062AFC70037D534 /* Constants.swift in Sources */,
 				E264E8802062C5360037D534 /* StudentInformations.swift in Sources */,

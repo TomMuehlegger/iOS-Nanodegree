@@ -66,7 +66,6 @@ class LoginViewController: UIViewController {
                     let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                     self.present(tabBarController, animated: true, completion: nil)
                 } else {
-                    print(error)
                     self.showAlert("Login failed", message: error!)
                 }
             }
@@ -102,7 +101,6 @@ class LoginViewController: UIViewController {
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-        
     }
 }
 

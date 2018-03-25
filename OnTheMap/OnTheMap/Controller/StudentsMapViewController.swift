@@ -45,7 +45,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
             if let toOpen = view.annotation?.subtitle {
                 let studentURL = URL(string: toOpen!)
                 guard (studentURL != nil) else {
-                    self.performUIUpdatesOnMain {
+                    performUIUpdatesOnMain {
                         self.showAlert("URL Error", message: "No valid URL")
                     }
                     return
@@ -128,7 +128,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Post new student location
     @IBAction func addNewLocation(_ sender: Any) {
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "postStudentInformationViewController") as! PostStudentInformationViewController
-        self.navigationController!.pushViewController(controller, animated: true)
+        let controller = storyboard!.instantiateViewController(withIdentifier: "postStudentInformationViewController") as! PostStudentInformationViewController
+        navigationController!.pushViewController(controller, animated: true)
     }
 }

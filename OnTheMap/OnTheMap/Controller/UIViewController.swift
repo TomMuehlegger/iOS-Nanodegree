@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UIViewController.swift
 //  OnTheMap
 //
 //  Created by Thomas Muehlegger on 21.03.18.
@@ -15,7 +15,7 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
         
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
         return
     }
     
