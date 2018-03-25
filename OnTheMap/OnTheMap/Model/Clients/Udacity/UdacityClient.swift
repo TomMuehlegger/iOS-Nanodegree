@@ -26,7 +26,7 @@ extension Client {
             
             // Check if there was any error?
             if let error = error {
-                completionLoginHandler(false, error.description)
+                completionLoginHandler(false, error.localizedDescription)
             } else {
                 let parsedJSONResult = results
                 

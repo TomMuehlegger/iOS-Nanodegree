@@ -28,7 +28,7 @@ extension Client {
             
             // Check if there was any error?
             if let error = error {
-                completionHandlerForGetStudentLocations(false, error.description)
+                completionHandlerForGetStudentLocations(false, error.localizedDescription)
             } else {
                 // Parse locations
                 if let parsedResults = results?[Constants.Parse.StudentLocationsJSON.Results] as? [[String:AnyObject]] {
@@ -67,7 +67,7 @@ extension Client {
             
             // Check if there was any error?
             if let error = error {
-                completionHandlerForPostStudentLocation(false, error.description)
+                completionHandlerForPostStudentLocation(false, error.localizedDescription)
             } else {
                 // Everything was fine
                 completionHandlerForPostStudentLocation(true, nil)

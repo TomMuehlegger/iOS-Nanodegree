@@ -66,7 +66,8 @@ class LoginViewController: UIViewController {
                     let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                     self.present(tabBarController, animated: true, completion: nil)
                 } else {
-                    self.showAlert("Login failed", message: "Wrong email or password")
+                    print(error)
+                    self.showAlert("Login failed", message: error!)
                 }
             }
         }
