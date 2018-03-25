@@ -91,7 +91,7 @@ class FlickrClient {
                 }
                 
                 /* GUARD: Check photoArray size > 0 */
-                guard ( photosArray.count != 0) else {
+                guard (photosArray.count != 0) else {
                     sendError("No Photos Found. Search Again.")
                     return
                 }
@@ -118,6 +118,8 @@ class FlickrClient {
                         photo.url = imageURL
                         
                         coreDataPhotoArray.append(photo)
+                        // Add the photo to the pin
+                        pin.addToPhotos(photo)
                     }
                 }
                 

@@ -75,6 +75,7 @@ class TravelLocationsMapViewController: UIViewController {
             }
         }
     }
+    
     // MARK: Handle Long Press
     @objc func handleLongPressGesture(_ longPressGesture: UIGestureRecognizer) {
         let clLocation: CLLocationCoordinate2D = mapViewLocations.convert(longPressGesture.location(ofTouch: 0, in: mapViewLocations), toCoordinateFrom: mapViewLocations)
