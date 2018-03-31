@@ -85,7 +85,7 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
             }
             
             self.performUIUpdatesOnMain {
-                if(photos?.count == 0) {
+                if (photos?.count == 0) {
                     self.labelNoImages.isHidden = false
                 } else {
                     self.labelNoImages.isHidden = true

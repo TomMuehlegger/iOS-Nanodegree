@@ -7,3 +7,5 @@ This repository contains project work for Udacity's [iOS Developer Nanodegree](h
 - **Project_01** - PitchPerfect
 - **Project_02** - MemeMe
 - **Project_03** - On the Map
+- **Project_04** - Virtual Tourist
+- **Project_05** - Capstone Projects
